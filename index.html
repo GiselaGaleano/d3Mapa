@@ -26,7 +26,7 @@
 	<body class="body">
 		<script type="text/javascript">
 			//Width and height
-			var w = 600;
+			var w = 400;
 			var h = 600;
 
 			//Define map projection
@@ -53,11 +53,11 @@
 			
 			//Legend
 			var x = d3.scaleSqrt()
-				.domain([1, 15])
+				.domain([0, 1])
 				.rangeRound([500, 900]);
 
 			var color2 = d3.scaleThreshold()
-				.domain([1, 5, 10, 15])
+				.domain([0, 0.3, 0.6, 1])
 				.range(d3.schemeOrRd[4]);
 			
 			var g = svg.append("g")
@@ -90,7 +90,7 @@
 				.attr("fill", "#000")
 				.attr("text-anchor", "start")
 				.attr("font-weight", "bold")
-				.text("Número de Instituciones de Educación Superior –IES-");
+				.text("Tasa de cobertura –IES-");
 
 			g.call(d3.axisBottom(x)
 				.tickSize(13)
@@ -102,7 +102,7 @@
 			d3.json("https://gist.githubusercontent.com/GiselaGaleano/1fcfbb673825109ba0bc9cd8dce520a7/raw/049e5b0b2f2de99890484580364cfa4014fb1147/datacolom.json", function(json) {
 
 				//Load in population data
-				d3.csv("https://gist.githubusercontent.com/GiselaGaleano/14ae569c0767657f1acf04cc709ec21f/raw/04a526b711d6ac2b820ccfe20f2f29840e2175c1/ies.csv",function(error, data){
+				d3.csv("https://gist.githubusercontent.com/GiselaGaleano/491ede815677ae4c1add560e362a7ebf/raw/6d38001751fce5ebd954d00223af90e81777f4c2/ies.csv",function(error, data){
 
 					//Set input domain for color scale
 					var min = d3.min(data, function(d) { return parseFloat( d.value.replace(',', '') ); });
